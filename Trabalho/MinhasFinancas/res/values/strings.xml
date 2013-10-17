@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">Minhas Finanças</string>
+    <string name="action_settings">Settings</string>
+    <string name="pref_category_general_key">Geral</string>
+    <string name="pref_category_general_title">Geral</string>
+    <string name="pref_list_key">List</string>
+    <string name="pref_list_title">Exemplo Lista</string>
+    <string name="list_summary1">Item Lista 1</string>
+    <string name="list_summary2">Item Lista 2</string>
+
+    <array name="pref_list_entryValues">
+        <item name="1">@string/list_summary1</item>
+        <item name="2">@string/list_summary2</item>
+    </array>
+    <array name="pref_list_entries">
+        <item name="1">@string/list_summary1</item>
+        <item name="2">@string/list_summary2</item>
+    </array>
+
+    <string name="pref_checkbox_key">Checkbox</string>
+    <string name="pref_checkbox_summary">Sumário checkbox</string>
+    <string name="pref_checkbox_title">Preference checkbox</string>
+    <string name="pref_edit_dialog_messsage">Mensagem do dialog</string>
+    <string name="pref_edit_title">Título do dialog</string>
+    <string name="pref_edit_key">Edit</string>
+    <string name="pref_edit_summary">Sumário edit</string>
+    <string name="pref_edit_title">Título edit</string>
+    <string name="pref_time_key">Time</string>
+    <string name="pref_time_summary">Configuração de tempo</string>
+    <string name="pref_time_title">Exemplo de tempo</string>
+    <string name="list_item1">Titulo item</string>
+    <string name="list_item2">Subtitulo item</string>
+    <string name="loading">Carregando</string>
+    <string name="loading1">Por favor, aguarde...</string>
+    <string name="menu_context_1">Editar</string>
+    <string name="menu_context_2">Excluir</string>
+    <string name="options">Opções</string>
+    <string name="title_activity_new_entry">Nova entrada</string>
+    <string name="entry_type">Tipo de entrada</string>
+    <string name="credit">Crédito</string>
+    <string name="debit">Débito</string>
+    <string name="value">Valor</string>
+    <string name="save">Salvar</string>
+    <string name="cancel">Cancelar</string>
+    <string name="confirmation">Confirmação</string>
+    <string name="delete_confirmation">Tem certeza que deseja remover esta entrada?</string>
+    <string name="yes">Sim</string>
+    <string name="no">Não</string>
+
+</resources>
