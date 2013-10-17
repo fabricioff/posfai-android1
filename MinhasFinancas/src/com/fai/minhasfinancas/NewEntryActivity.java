@@ -1,13 +1,16 @@
 package com.fai.minhasfinancas;
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
+
 import android.app.Activity;
 import android.content.Intent;
-import android.net.ParseException;
 import android.os.Bundle;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Toast;
 
 import com.fai.minhasfinancas.entity.Entry;
 import com.fai.minhasfinancas.sqlite.EntryOpenHelper;
@@ -33,19 +36,33 @@ public class NewEntryActivity extends Activity {
 					EditText etValue = (EditText) findViewById(R.id.etValue);
 					
 					Entry entry = new Entry();
-					entry.setName("Item novo");
-					entry.setValue(Float.parseFloat(etValue.getText().toString()));
-					entry.setType(0);
 					
-					db.addEntry(entry);
-					db.close();
+					SimpleDateFormat sdf = new SimpleDateFormat("dd-MM-yyyy HH:mm:ss");
 					
-					//Devolve o resultado para a MainActivity indicando que eh para atualizar
-					Intent resultIntent = new Intent();
-					resultIntent.putExtra("update", "update");
-					setResult(Activity.RESULT_OK, resultIntent);
+					String sbirthday = sdf.format(new Date());
+					entry.setDate(sbirthday);
 					
-					finish();
+					try {
+						entry.setValue(Float.parseFloat(etValue.getText().toString()));
+						
+						String type = getIntent().getExtras().getString("type");
+						entry.setType(type.equals("credit") ? 0 : 1);
+						
+						db.addEntry(entry);
+						db.close();
+						
+						//Devolve o resultado para a MainActivity indicando que eh para atualizar
+						Intent resultIntent = new Intent();
+						resultIntent.putExtra("update", "update");
+						setResult(Activity.RESULT_OK, resultIntent);
+						
+						finish();
+					} catch (Exception e) {
+						db.close();
+						Toast.makeText(getApplicationContext(), "Formato inválido de valor!", Toast.LENGTH_LONG).show();
+					}
+					
+					
 				} catch (Exception e) {
 					e.printStackTrace();
 					finish();

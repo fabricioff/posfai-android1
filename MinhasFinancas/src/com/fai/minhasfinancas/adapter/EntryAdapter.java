@@ -5,6 +5,7 @@ import java.util.List;
 import android.content.Context;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.graphics.Color;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -22,8 +23,8 @@ public class EntryAdapter extends BaseAdapter {
 	private ViewHolder holder;
 
 	static class ViewHolder {
-		private TextView tvTitle;
-		private TextView tvSubtitle;
+		private TextView tvDate;
+		private TextView tvValue;
 		private ImageView pic;
 	}
 
@@ -53,9 +54,9 @@ public class EntryAdapter extends BaseAdapter {
 			convertView = mInflater.inflate(R.layout.person_adapter_item, null);
 			holder = new ViewHolder();
 
-			holder.tvTitle = (TextView) convertView
+			holder.tvDate = (TextView) convertView
 					.findViewById(R.id.etTitle);
-			holder.tvSubtitle = (TextView) convertView
+			holder.tvValue = (TextView) convertView
 					.findViewById(R.id.etSubtitle);
 			holder.pic = (ImageView) convertView.findViewById(R.id.ivImage);
 
@@ -68,18 +69,16 @@ public class EntryAdapter extends BaseAdapter {
 		if(lstPeople != null && position < lstPeople.size()) {
 		
 			Entry entry = lstPeople.get(position);
-			holder.tvTitle.setText(entry.getName());
-			holder.tvSubtitle.setText("Valor: " + entry.getValue());
-		
-//			if (entry.getPicture() != null) {
-//				byte[] blob = entry.getPicture();
-//				Bitmap bmp = BitmapFactory.decodeByteArray(blob, 0, blob.length);
-//				ImageView image = new ImageView(convertView.getContext());
-//				image.setImageBitmap(bmp);
-//				holder.pic.setImageBitmap(bmp);
-//			} else {
-//				holder.pic.setImageResource(R.drawable.ic_launcher);
-//			}
+			holder.tvDate.setText(entry.getDate());
+			holder.tvValue.setText("Valor: R$ " + entry.getValue());
+			
+			if(entry.getType() == 0){
+				holder.pic.setImageResource(R.drawable.ic_credit);
+				holder.tvValue.setTextColor(Color.BLUE);
+			}else{
+				holder.pic.setImageResource(R.drawable.ic_debit);
+				holder.tvValue.setTextColor(Color.RED);
+			}
 		}
 		return convertView;
 	}

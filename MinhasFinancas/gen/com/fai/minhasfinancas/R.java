@@ -914,9 +914,11 @@ containing a value of this type.
         public static final int abs__textfield_searchview_right_holo_dark=0x7f02006d;
         public static final int abs__textfield_searchview_right_holo_light=0x7f02006e;
         public static final int abs__toast_frame=0x7f02006f;
-        public static final int ic_launcher=0x7f020070;
-        public static final int ic_new=0x7f020071;
-        public static final int ic_settings=0x7f020072;
+        public static final int ic_credit=0x7f020070;
+        public static final int ic_debit=0x7f020071;
+        public static final int ic_launcher=0x7f020072;
+        public static final int ic_new=0x7f020073;
+        public static final int ic_settings=0x7f020074;
     }
     public static final class id {
         public static final int LinearLayout1=0x7f050032;
@@ -959,29 +961,28 @@ containing a value of this type.
         public static final int abs__textButton=0x7f050013;
         public static final int abs__title=0x7f05001b;
         public static final int abs__up=0x7f05000b;
-        public static final int action_new=0x7f050040;
-        public static final int action_settings=0x7f05003f;
-        public static final int btnCancel=0x7f05003b;
-        public static final int btnSave=0x7f05003a;
+        public static final int action_credit=0x7f05003e;
+        public static final int action_debit=0x7f05003f;
+        public static final int action_settings=0x7f05003d;
+        public static final int btnCancel=0x7f050039;
+        public static final int btnSave=0x7f050038;
         public static final int disableHome=0x7f050009;
         public static final int edit_query=0x7f050026;
-        public static final int etSubtitle=0x7f05003e;
-        public static final int etTitle=0x7f05003d;
-        public static final int etValue=0x7f050039;
+        public static final int etSubtitle=0x7f05003c;
+        public static final int etTitle=0x7f05003b;
+        public static final int etValue=0x7f050037;
         public static final int homeAsUp=0x7f050006;
-        public static final int ivImage=0x7f05003c;
+        public static final int ivImage=0x7f05003a;
         public static final int listEntries=0x7f050033;
         public static final int listMode=0x7f050002;
         public static final int normal=0x7f050001;
-        public static final int radioCredit=0x7f050036;
-        public static final int radioDebit=0x7f050037;
         public static final int radioGroup1=0x7f050035;
         public static final int showCustom=0x7f050008;
         public static final int showHome=0x7f050005;
         public static final int showTitle=0x7f050007;
         public static final int tabMode=0x7f050003;
-        public static final int textView1=0x7f050034;
-        public static final int textView2=0x7f050038;
+        public static final int textView2=0x7f050036;
+        public static final int tvSaldo=0x7f050034;
         public static final int useLogo=0x7f050004;
         public static final int wrap_content=0x7f050000;
     }
@@ -1063,10 +1064,12 @@ containing a value of this type.
         public static final int abs__shareactionprovider_share_with_application=0x7f0a0007;
         public static final int action_settings=0x7f0a000e;
         public static final int app_name=0x7f0a000d;
-        public static final int cancel=0x7f0a002d;
-        public static final int credit=0x7f0a0029;
-        public static final int debit=0x7f0a002a;
-        public static final int entry_type=0x7f0a0028;
+        public static final int cancel=0x7f0a002c;
+        public static final int confirmation=0x7f0a002d;
+        public static final int credit=0x7f0a0028;
+        public static final int debit=0x7f0a0029;
+        public static final int delete_confirmation=0x7f0a002e;
+        public static final int entry_type=0x7f0a0027;
         public static final int list_item1=0x7f0a001f;
         public static final int list_item2=0x7f0a0020;
         public static final int list_summary1=0x7f0a0013;
@@ -1075,8 +1078,8 @@ containing a value of this type.
         public static final int loading1=0x7f0a0022;
         public static final int menu_context_1=0x7f0a0023;
         public static final int menu_context_2=0x7f0a0024;
-        public static final int menu_context_3=0x7f0a0025;
-        public static final int options=0x7f0a0026;
+        public static final int no=0x7f0a0030;
+        public static final int options=0x7f0a0025;
         public static final int pref_category_general_key=0x7f0a000f;
         public static final int pref_category_general_title=0x7f0a0010;
         public static final int pref_checkbox_key=0x7f0a0015;
@@ -1091,9 +1094,10 @@ containing a value of this type.
         public static final int pref_time_key=0x7f0a001c;
         public static final int pref_time_summary=0x7f0a001d;
         public static final int pref_time_title=0x7f0a001e;
-        public static final int save=0x7f0a002c;
-        public static final int title_activity_new_entry=0x7f0a0027;
-        public static final int value=0x7f0a002b;
+        public static final int save=0x7f0a002b;
+        public static final int title_activity_new_entry=0x7f0a0026;
+        public static final int value=0x7f0a002a;
+        public static final int yes=0x7f0a002f;
     }
     public static final class style {
         /** 

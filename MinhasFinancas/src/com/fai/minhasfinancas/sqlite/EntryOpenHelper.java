@@ -28,7 +28,7 @@ public class EntryOpenHelper extends SQLiteOpenHelper {
 	@Override
 	public void onCreate(SQLiteDatabase db) {
 		db.execSQL("CREATE TABLE entry(id INTEGER PRIMARY KEY AUTOINCREMENT,"
-				+ "name" + " TEXT not null," + "value" + " REAL not null," + "type" + " INTEGER not null)");
+				+ "date" + " DATETIME not null," + "value" + " REAL not null," + "type" + " INTEGER not null)");
 	}
 
 	@Override
@@ -39,13 +39,13 @@ public class EntryOpenHelper extends SQLiteOpenHelper {
 	public void addEntry(Entry entry) {
 		SQLiteDatabase db = this.getWritableDatabase();
 
-		String sql = "INSERT INTO entry (name, value, type) VALUES(?,?,?)";
+		String sql = "INSERT INTO entry (date, value, type) VALUES(?,?,?)";
 
 		SQLiteStatement insertStmt = db.compileStatement(sql);
 		insertStmt.clearBindings();
 
-		if (entry.getName() != null) {
-			insertStmt.bindString(1, entry.getName());
+		if (entry.getDate() != null) {
+			insertStmt.bindString(1, entry.getDate());
 		} else {
 			insertStmt.bindString(1, "");
 		}
@@ -61,13 +61,13 @@ public class EntryOpenHelper extends SQLiteOpenHelper {
 	public void updateEntry(Entry entry) {
 		SQLiteDatabase db = getWritableDatabase();
 
-		String sql = "UPDATE entry set name = ?, value = ?, type = ? where id = ?";
+		String sql = "UPDATE entry set date = ?, value = ?, type = ? where id = ?";
 
 		SQLiteStatement insertStmt = db.compileStatement(sql);
 		insertStmt.clearBindings();
 		
-		if (entry.getName() != null) {
-			insertStmt.bindString(1, entry.getName());
+		if (entry.getDate() != null) {
+			insertStmt.bindString(1, entry.getDate());
 		} else {
 			insertStmt.bindString(1, "");
 		}
@@ -75,6 +75,8 @@ public class EntryOpenHelper extends SQLiteOpenHelper {
 		insertStmt.bindDouble(2, entry.getValue());
 		
 		insertStmt.bindLong(3, entry.getType());
+		
+		insertStmt.bindLong(4, entry.getId());
 		
 		if (Build.VERSION.SDK_INT < Build.VERSION_CODES.HONEYCOMB) {
 			insertStmt.execute();
@@ -110,7 +112,7 @@ public class EntryOpenHelper extends SQLiteOpenHelper {
 
 		SQLiteDatabase db = this.getWritableDatabase();
 		Cursor cursor = db.rawQuery(
-				"select * from entry order by name", null);
+				"select * from entry order by date", null);
 		if (cursor.getCount() != 0) {
 			if (cursor.moveToFirst()) {
 				do {
@@ -118,8 +120,8 @@ public class EntryOpenHelper extends SQLiteOpenHelper {
 
 					entry.setId(cursor.getInt(cursor.getColumnIndex("id")));
 									
-					entry.setName(cursor.getString(cursor
-							.getColumnIndex("name")));
+					entry.setDate(cursor.getString(cursor
+							.getColumnIndex("date")));
 
 					entry.setValue(cursor.getFloat(cursor
 							.getColumnIndex("value")));
@@ -149,7 +151,7 @@ public class EntryOpenHelper extends SQLiteOpenHelper {
 				entry = new Entry();
 
 				entry.setId(cursor.getInt(cursor.getColumnIndex("id")));
-				entry.setName(cursor.getString(cursor.getColumnIndex("name")));
+				entry.setDate(cursor.getString(cursor.getColumnIndex("date")));
 				entry.setValue(cursor.getFloat(cursor.getColumnIndex("value")));
 				entry.setType(cursor.getInt(cursor.getColumnIndex("type")));
 			}

@@ -34,9 +34,8 @@
     <string name="list_item2">Subtitulo item</string>
     <string name="loading">Carregando</string>
     <string name="loading1">Por favor, aguarde...</string>
-    <string name="menu_context_1">Item 1</string>
-    <string name="menu_context_2">Item 2</string>
-    <string name="menu_context_3">Item 3</string>
+    <string name="menu_context_1">Editar</string>
+    <string name="menu_context_2">Excluir</string>
     <string name="options">Opções</string>
     <string name="title_activity_new_entry">Nova entrada</string>
     <string name="entry_type">Tipo de entrada</string>
@@ -45,5 +44,9 @@
     <string name="value">Valor</string>
     <string name="save">Salvar</string>
     <string name="cancel">Cancelar</string>
+    <string name="confirmation">Confirmação</string>
+    <string name="delete_confirmation">Tem certeza que deseja remover esta entrada?</string>
+    <string name="yes">Sim</string>
+    <string name="no">Não</string>
 
 </resources>
