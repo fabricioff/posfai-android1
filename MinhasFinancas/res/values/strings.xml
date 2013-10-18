@@ -30,8 +30,8 @@
     <string name="pref_time_key">Time</string>
     <string name="pref_time_summary">Configuração de tempo</string>
     <string name="pref_time_title">Exemplo de tempo</string>
-    <string name="list_item1">Titulo item</string>
-    <string name="list_item2">Subtitulo item</string>
+    <string name="list_item1">Descriçao</string>
+    <string name="list_item2">Valor</string><string name="list_item3">Data</string>
     <string name="loading">Carregando</string>
     <string name="loading1">Por favor, aguarde...</string>
     <string name="menu_context_1">Editar</string>
@@ -48,5 +48,7 @@
     <string name="delete_confirmation">Tem certeza que deseja remover esta entrada?</string>
     <string name="yes">Sim</string>
     <string name="no">Não</string>
+    <string name="description">Descrição</string>
+    
 
 </resources>

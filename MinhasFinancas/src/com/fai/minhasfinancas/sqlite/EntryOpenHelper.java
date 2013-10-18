@@ -11,11 +11,14 @@ import android.database.sqlite.SQLiteDatabase.CursorFactory;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.database.sqlite.SQLiteStatement;
 import android.os.Build;
+import android.util.Log;
 
 import com.fai.minhasfinancas.entity.Entry;
 
 @TargetApi(Build.VERSION_CODES.HONEYCOMB)
 public class EntryOpenHelper extends SQLiteOpenHelper {
+	
+	private final String NO_REGISTER = "NO REGISTER";
 
 	private static String DATABASENAME = "minhasfinancas.db";
 	private ArrayList<Entry> entries = new ArrayList<Entry>();
@@ -28,18 +31,22 @@ public class EntryOpenHelper extends SQLiteOpenHelper {
 	@Override
 	public void onCreate(SQLiteDatabase db) {
 		db.execSQL("CREATE TABLE entry(id INTEGER PRIMARY KEY AUTOINCREMENT,"
-				+ "date" + " DATETIME not null," + "value" + " REAL not null," + "type" + " INTEGER not null)");
+				+ "date" + " DATETIME not null," + "value" + " REAL not null," + "type" + " INTEGER not null,"
+				+ "description" + " TEXT not null)");
 	}
 
 	@Override
 	public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
 		//Ao atualizar a versao
+		Log.w("EntryOpenHelper", "onUpgrade - OldVersion: " + oldVersion);
+		Log.w("EntryOpenHelper", "onUpgrade - NewVersion: " + newVersion);
+		
 	}
 
 	public void addEntry(Entry entry) {
 		SQLiteDatabase db = this.getWritableDatabase();
 
-		String sql = "INSERT INTO entry (date, value, type) VALUES(?,?,?)";
+		String sql = "INSERT INTO entry (date, value, type, description) VALUES(?,?,?,?)";
 
 		SQLiteStatement insertStmt = db.compileStatement(sql);
 		insertStmt.clearBindings();
@@ -53,7 +60,13 @@ public class EntryOpenHelper extends SQLiteOpenHelper {
 		insertStmt.bindDouble(2, entry.getValue());
 
 		insertStmt.bindLong(3, entry.getType());
-
+		
+		if (entry.getDescription() != null) {
+			insertStmt.bindString(4, entry.getDescription());
+		} else {
+			insertStmt.bindString(4, NO_REGISTER);
+		}
+		
 		insertStmt.executeInsert();
 		db.close();
 	}
@@ -61,7 +74,7 @@ public class EntryOpenHelper extends SQLiteOpenHelper {
 	public void updateEntry(Entry entry) {
 		SQLiteDatabase db = getWritableDatabase();
 
-		String sql = "UPDATE entry set date = ?, value = ?, type = ? where id = ?";
+		String sql = "UPDATE entry set date = ?, value = ?, type = ?, description = ? where id = ?";
 
 		SQLiteStatement insertStmt = db.compileStatement(sql);
 		insertStmt.clearBindings();
@@ -76,7 +89,13 @@ public class EntryOpenHelper extends SQLiteOpenHelper {
 		
 		insertStmt.bindLong(3, entry.getType());
 		
-		insertStmt.bindLong(4, entry.getId());
+		if (entry.getDescription() != null) {
+			insertStmt.bindString(4, entry.getDescription());
+		} else {
+			insertStmt.bindString(4, NO_REGISTER);
+		}
+		
+		insertStmt.bindLong(5, entry.getId());
 		
 		if (Build.VERSION.SDK_INT < Build.VERSION_CODES.HONEYCOMB) {
 			insertStmt.execute();
@@ -129,6 +148,9 @@ public class EntryOpenHelper extends SQLiteOpenHelper {
 					entry.setType(cursor.getInt(cursor
 							.getColumnIndex("type")));
 					
+					entry.setDescription(cursor.getString(cursor
+							.getColumnIndex("description")));					
+					
 					entries.add(entry);
 
 				} while (cursor.moveToNext());
@@ -154,6 +176,7 @@ public class EntryOpenHelper extends SQLiteOpenHelper {
 				entry.setDate(cursor.getString(cursor.getColumnIndex("date")));
 				entry.setValue(cursor.getFloat(cursor.getColumnIndex("value")));
 				entry.setType(cursor.getInt(cursor.getColumnIndex("type")));
+				entry.setDescription(cursor.getString(cursor.getColumnIndex("description")));
 			}
 		}
 		cursor.close();

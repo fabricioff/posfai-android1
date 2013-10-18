@@ -10,6 +10,7 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.fai.minhasfinancas.entity.Entry;
@@ -18,11 +19,24 @@ import com.fai.minhasfinancas.sqlite.EntryOpenHelper;
 public class NewEntryActivity extends Activity {
 	
 	private EntryOpenHelper db;
+	private TextView textType;
+	private String strType;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_new_entry);
+		
+		// TextView para indicar se credito ou debito		
+		textType = (TextView) findViewById(R.id.textType);
+		strType = getIntent().getExtras().getString("type");
+		if (strType.equals("credit")) {
+			//textType.setText(findViewById(R.string.credit).toString());
+			textType.setText("Inserindo Crédito");
+		} else {
+			//textType.setText(findViewById(R.string.debit).toString());
+			textType.setText("Inserindo Débito");
+		}						
 		
 		Button btnSave = (Button) findViewById(R.id.btnSave);
 		btnSave.setOnClickListener(new OnClickListener() {
@@ -33,20 +47,22 @@ public class NewEntryActivity extends Activity {
 				db.getWritableDatabase();
 		
 				try {
+					EditText editDescription = (EditText) findViewById(R.id.editDescription);
 					EditText etValue = (EditText) findViewById(R.id.etValue);
 					
 					Entry entry = new Entry();
 					
-					SimpleDateFormat sdf = new SimpleDateFormat("dd-MM-yyyy HH:mm:ss");
+					SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yy - HH:mm:ss");
 					
 					String sbirthday = sdf.format(new Date());
 					entry.setDate(sbirthday);
 					
 					try {
+						entry.setDescription(editDescription.getText().toString());
 						entry.setValue(Float.parseFloat(etValue.getText().toString()));
 						
-						String type = getIntent().getExtras().getString("type");
-						entry.setType(type.equals("credit") ? 0 : 1);
+						//strType = getIntent().getExtras().getString("type");
+						entry.setType(strType.equals("credit") ? 0 : 1);
 						
 						db.addEntry(entry);
 						db.close();
@@ -59,7 +75,7 @@ public class NewEntryActivity extends Activity {
 						finish();
 					} catch (Exception e) {
 						db.close();
-						Toast.makeText(getApplicationContext(), "Formato inv�lido de valor!", Toast.LENGTH_LONG).show();
+						Toast.makeText(getApplicationContext(), "Formato invalido de valor!", Toast.LENGTH_LONG).show();
 					}
 					
 					

@@ -4,6 +4,8 @@ public class Entry {
 	private int id;
 	private String date;
 	private float value;
+	private String description;
+	
 	public float getValue() {
 		return value;
 	}
@@ -36,6 +38,14 @@ public class Entry {
 
 	public void setDate(String date) {
 		this.date = date;
+	}
+	
+	public String getDescription() {
+		return description;
+	}
+	
+	public void setDescription(String description) {
+		this.description = description;
 	}
 
 }

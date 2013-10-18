@@ -26,7 +26,7 @@
         android:orientation="vertical" >
 
         <TextView
-            android:id="@+id/etTitle"
+            android:id="@+id/etDescription"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginBottom="5dp"
@@ -40,11 +40,16 @@
             android:textStyle="bold" />
 
         <TextView
-            android:id="@+id/etSubtitle"
+            android:id="@+id/etDate"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="5dp"
-            android:layout_marginLeft="5dp"
+            android:layout_weight="1"
+            android:text="@string/list_item3" />
+
+        <TextView
+            android:id="@+id/etValue"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             android:layout_weight="1"
             android:ems="10"
             android:text="@string/list_item2"

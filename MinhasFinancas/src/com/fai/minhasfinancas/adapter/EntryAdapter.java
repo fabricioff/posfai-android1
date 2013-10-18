@@ -23,6 +23,7 @@ public class EntryAdapter extends BaseAdapter {
 	private ViewHolder holder;
 
 	static class ViewHolder {
+		private TextView tvDescription;
 		private TextView tvDate;
 		private TextView tvValue;
 		private ImageView pic;
@@ -54,10 +55,12 @@ public class EntryAdapter extends BaseAdapter {
 			convertView = mInflater.inflate(R.layout.person_adapter_item, null);
 			holder = new ViewHolder();
 
+			holder.tvDescription = (TextView) convertView
+					.findViewById(R.id.etDescription);			
 			holder.tvDate = (TextView) convertView
-					.findViewById(R.id.etTitle);
+					.findViewById(R.id.etDate);
 			holder.tvValue = (TextView) convertView
-					.findViewById(R.id.etSubtitle);
+					.findViewById(R.id.etValue);
 			holder.pic = (ImageView) convertView.findViewById(R.id.ivImage);
 
 			convertView.setTag(holder);
@@ -69,6 +72,7 @@ public class EntryAdapter extends BaseAdapter {
 		if(lstPeople != null && position < lstPeople.size()) {
 		
 			Entry entry = lstPeople.get(position);
+			holder.tvDescription.setText(entry.getDescription());
 			holder.tvDate.setText(entry.getDate());
 			holder.tvValue.setText("Valor: R$ " + entry.getValue());
 			
