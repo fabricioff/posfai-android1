@@ -359,6 +359,8 @@ int string abs__searchview_description_voice 0x7f0a000c
 int string abs__shareactionprovider_share_with 0x7f0a0006
 int string abs__shareactionprovider_share_with_application 0x7f0a0007
 int string action_settings 0x7f0a000e
+int string addingC 0x7f0a0033
+int string addingD 0x7f0a0034
 int string app_name 0x7f0a000d
 int string cancel 0x7f0a002d
 int string confirmation 0x7f0a002e

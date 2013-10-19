@@ -49,6 +49,8 @@
     <string name="yes">Sim</string>
     <string name="no">Não</string>
     <string name="description">Descrição</string>
+    <string name="addingC">Inserindo crédito</string>
+    <string name="addingD">Inserindo débito</string>
     
 
 </resources>

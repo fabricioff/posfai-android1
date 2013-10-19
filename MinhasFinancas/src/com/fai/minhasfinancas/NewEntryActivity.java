@@ -32,10 +32,10 @@ public class NewEntryActivity extends Activity {
 		strType = getIntent().getExtras().getString("type");
 		if (strType.equals("credit")) {
 			//textType.setText(findViewById(R.string.credit).toString());
-			textType.setText("Inserindo Crédito");
+			textType.setText(R.string.addingC);
 		} else {
 			//textType.setText(findViewById(R.string.debit).toString());
-			textType.setText("Inserindo Débito");
+			textType.setText(R.string.addingD);
 		}						
 		
 		Button btnSave = (Button) findViewById(R.id.btnSave);

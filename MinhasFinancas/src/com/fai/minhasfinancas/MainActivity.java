@@ -136,6 +136,17 @@ public class MainActivity extends SherlockActivity {
 			});
 			
 			final EditText value = (EditText) edit.findViewById(R.id.etValue);
+			final TextView type = (TextView) edit.findViewById(R.id.textType);
+			final EditText description = (EditText) edit.findViewById(R.id.editDescription);
+			
+			value.setText(Float.toString(entry.getValue()));
+			description.setText(entry.getDescription());
+			
+			if(entry.getType() == 0){
+				type.setText("Inserindo crédito");
+			} else {
+				type.setText("Inserindo débito");
+			}
 			
 			final Button btnOK = (Button) edit.findViewById(R.id.btnSave);
 			btnOK.setOnClickListener(new OnClickListener() {
@@ -157,6 +168,7 @@ public class MainActivity extends SherlockActivity {
 						}
 						
 						entry.setValue(etValue);
+						entry.setDescription(description.getText().toString());
 						entries.set(menuItemPosition, entry);
 						db.updateEntry(entry);
 						db.close();
